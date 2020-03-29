@@ -17,7 +17,7 @@ const client = new ApolloClient({
   },
 });
 
-export function handler(event, context, callback) {
+export async function handler(event, context) {
   const findAllTodos = gql`
     query FindAllTodos {
       allTodos {
@@ -33,13 +33,11 @@ export function handler(event, context, callback) {
     }
   `;
 
-  client.query({
-    query: findAllTodos
-  }).then(results => {
-    console.log(results);
-    callback(null, {
+  return client.query({ query: findAllTodos })
+    .then( results => JSON.stringify(results))
+    .then( data => ({
       statusCode: 200,
-      body: JSON.stringify(results),
-    });
-  }).catch(e => callback(e.toString()));
+      body: data
+    }))
+    .catch(e => callback(e.toString()));
 }
