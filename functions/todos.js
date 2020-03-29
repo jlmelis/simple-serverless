@@ -39,5 +39,5 @@ export async function handler(event, context) {
       statusCode: 200,
       body: data
     }))
-    .catch(e => callback(e.toString()));
+    .catch(error => ({ statusCode: 422, body: String(error) }));
 }
