@@ -10,7 +10,7 @@
     "encoding": "^0.1.12",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "netlify-lambda": "^1.6.3"
